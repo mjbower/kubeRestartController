@@ -1,0 +1,40 @@
+{
+  "@type":"MessageCard",
+  "@context":"http://schema.org/extensions",
+  "themeColor":"0076D7",
+  "summary":"Cluster has failing Pods {{.Comment}}",
+  "sections":[
+    {
+      "activityTitle":"![TestImage](https://via.placeholder.com/150)K8s Cluster has repeatedly failing pods",
+      "activitySubtitle":"Kubernetes cluster -> {{.ClusterName}}",
+      "activityImage":"https://via.placeholder.com/150/0000FF/808080",
+      "facts":[
+        {
+          "name":"Cluster",
+          "value":"{{.ClusterName}}"
+        },
+        {
+          "name":"Pod Name",
+          "value":"{{.PodName}}"
+        },
+        {
+          "name":"Namespace",
+          "value":"{{.PodNamespace}}"
+        },
+        {
+          "name":"Restarts",
+          "value":"{{.Restarts}}"
+        },
+        {
+          "name":"Error",
+          "value":"{{.Errmsg}}"
+        },
+        {
+          "name":"Documentation",
+          "value":"[Confluence](https://confluence.maerskdev.net/x/OxFtC)"
+        }
+      ],
+      "markdown":true
+    }
+  ]
+}

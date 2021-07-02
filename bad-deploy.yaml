@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: badpod
+  name: badpod
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: badpod
+  template:
+    metadata:
+      labels:
+        app: badpod
+    spec:
+      containers:
+        - name: alpine
+          image: alpine
+          command: ["/bin/sh"]
+          args: ["-c", "while true; do echo hello ; sleep 3;done"]
+          image: alpine
+          livenessProbe:
+            exec:
+              command:
+                - cat
+                - /tmp/healthy
+            initialDelaySeconds: 0
+            periodSeconds: 1
+            failureThreshold: 1
